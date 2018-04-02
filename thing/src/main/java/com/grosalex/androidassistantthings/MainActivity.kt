@@ -28,7 +28,7 @@ import java.net.UnknownHostException
 
 import java.util.ArrayList
 
-class MainActivity : Activity(), View.OnClickListener {
+class MainActivity : Activity() {
 
 
     private var title: TextView? = null
@@ -43,6 +43,8 @@ class MainActivity : Activity(), View.OnClickListener {
     private var textClock: TextClock? = null
     private var ibHome: ImageButton? = null
 
+    private var ibLamp: ImageButton? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -53,6 +55,7 @@ class MainActivity : Activity(), View.OnClickListener {
         icon = findViewById(R.id.weather_icon)
         hourlyRecycler = findViewById(R.id.hourly_recycler)
         ibHome = findViewById(R.id.ib_home)
+        ibLamp = findViewById(R.id.ib_lamp)
 
         hourlyRecycler?.setHasFixedSize(true)
 
@@ -74,7 +77,15 @@ class MainActivity : Activity(), View.OnClickListener {
         fetchNextDaysWeather()
         update()
 
-        (ibHome as ImageButton).setOnClickListener(this)
+        ibHome?.setOnClickListener {
+            val intent = Intent(this, TaskActivity::class.java)
+            startActivity(intent)
+        }
+
+        ibLamp?.setOnClickListener {
+            val intent = Intent(this, LampActivity::class.java)
+            startActivity(intent)
+        }
 
         var t = Thread(Runnable {
             try {
@@ -88,7 +99,7 @@ class MainActivity : Activity(), View.OnClickListener {
                     //var st = input.readLine();
                     val out = s.getOutputStream()
                     var outToServer = DataOutputStream(s.getOutputStream());
-                    outToServer.writeBytes( taskList(this) + '\n');
+                    outToServer.writeBytes(taskList(this) + '\n');
 
                     Log.d("TcpExample", "Send to client: ");
                     s.close();
@@ -164,11 +175,5 @@ class MainActivity : Activity(), View.OnClickListener {
     companion object {
 
         private val TAG = "MainActivity"
-    }
-
-    override fun onClick(v: View?) {
-        val intent = Intent(this, TaskActivity::class.java)
-        startActivity(intent)
-
     }
 }
