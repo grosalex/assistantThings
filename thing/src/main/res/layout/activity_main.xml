@@ -8,6 +8,16 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="24dp">
 
+    <ImageButton
+        android:id="@+id/ib_lamp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_lightbulb_outline_white_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textClock"
+        app:layout_constraintTop_toTopOf="@id/textClock" />
+
     <TextView
         android:id="@+id/title"
         style="@style/TitleTextView"
@@ -16,8 +26,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/today_weather"
-        android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ib_lamp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -106,19 +115,8 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_home_white_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/textClock"
-        app:layout_constraintEnd_toStartOf="@id/ib_lamp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textClock"
         app:layout_constraintTop_toTopOf="@+id/textClock" />
-
-    <ImageButton
-        android:id="@+id/ib_lamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_circle_white_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textClock"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ib_home"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </android.support.constraint.ConstraintLayout>

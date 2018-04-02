@@ -23,7 +23,7 @@ import com.philips.lighting.hue.sdk.wrapper.domain.clip.ClipResponse
 /**
  * Created by grosalex on 02/04/2018.
  */
-class DevicesAdapter(var lampActivity: Activity, var devices: MutableList<Device>?) : RecyclerView.Adapter<DevicesAdapter.ViewHolder>() {
+class DevicesAdapter(var lampActivity: Activity, var devices: List<Device>?) : RecyclerView.Adapter<DevicesAdapter.ViewHolder>() {
     override fun getItemCount(): Int = devices?.size ?: 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,9 +39,12 @@ class DevicesAdapter(var lampActivity: Activity, var devices: MutableList<Device
                 it.tvName?.text = light.name
 
                 val lightState = light.lightState
-                it.switch?.isChecked = lightState.isOn
-
-                it.switch?.setOnCheckedChangeListener { buttonView, isChecked ->
+                val switch = it.switch ?: return
+                switch.isChecked = lightState.isOn
+                it.v.setOnClickListener {
+                    switch.isChecked = !switch.isChecked
+                }
+                switch.setOnCheckedChangeListener { _, isChecked ->
                     lightState.isOn = isChecked
                     light.updateState(lightState, BridgeConnectionType.LOCAL, object : BridgeResponseCallback() {
                         override fun handleCallback(p0: Bridge?, p1: ReturnCode?, p2: MutableList<ClipResponse>?, p3: MutableList<HueError>?) {
@@ -54,7 +57,7 @@ class DevicesAdapter(var lampActivity: Activity, var devices: MutableList<Device
         }
     }
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class ViewHolder(val v: View) : RecyclerView.ViewHolder(v) {
         var tvName: TextView? = v.findViewById(R.id.tv_lamp_name)
         var switch: Switch? = v.findViewById(R.id.switch_status)
 

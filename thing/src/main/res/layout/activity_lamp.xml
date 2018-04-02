@@ -7,8 +7,8 @@
 
     <ImageButton
         android:id="@+id/ibBack"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="@dimen/common"
         android:layout_marginEnd="@dimen/common"
         android:layout_marginStart="@dimen/common"
@@ -21,9 +21,10 @@
         app:layout_constraintTop_toTopOf="@+id/title" />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:id="@+id/rv_lamp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/ibBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -15,6 +15,7 @@ import com.philips.lighting.hue.sdk.wrapper.discovery.BridgeDiscoveryCallback
 import com.philips.lighting.hue.sdk.wrapper.connection.BridgeConnectionType
 import com.philips.lighting.hue.sdk.wrapper.domain.*
 import com.philips.lighting.hue.sdk.wrapper.domain.device.Device
+import com.philips.lighting.hue.sdk.wrapper.domain.device.light.LightPoint
 
 
 /**
@@ -101,9 +102,8 @@ class LampActivity : Activity() {
                     // It is now safe to perform operations on the bridge state.
                     updateUI(UIState.Connected, "Connected!");
                     devices = bridge?.bridgeState?.devices
-                    devices?.let { updateDevicesList(it) }
+                    devices?.let { updateLampList(it) }
                 }
-
 
 
                 BridgeStateUpdatedEvent.LIGHTS_AND_GROUPS -> return
@@ -112,9 +112,9 @@ class LampActivity : Activity() {
         }
     }
 
-    private fun updateDevicesList(devices: MutableList<Device>) {
+    private fun updateLampList(devices: MutableList<Device>) {
         runOnUiThread {
-            devicesAdapter.devices = devices
+            devicesAdapter.devices = devices.filter { it is LightPoint }
             devicesAdapter.notifyDataSetChanged()
         }
     }
