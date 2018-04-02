@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assistantThings.iml" filepath="$PROJECT_DIR$/assistantThings.iml" />
       <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
       <module fileurl="file://$PROJECT_DIR$/thing/thing.iml" filepath="$PROJECT_DIR$/thing/thing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/thingscompanion.iml" filepath="$PROJECT_DIR$/thingscompanion.iml" />
+      <module fileurl="file://C:\Users\grosalex\StudioProjects\assistantThings\thingscompanion.iml" filepath="C:\Users\grosalex\StudioProjects\assistantThings\thingscompanion.iml" />
     </modules>
   </component>
 </project>

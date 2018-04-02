@@ -60,5 +60,5 @@
         app:layout_constraintLeft_toRightOf="@id/task_done"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/task_done"
-    />
+        />
 </android.support.constraint.ConstraintLayout>

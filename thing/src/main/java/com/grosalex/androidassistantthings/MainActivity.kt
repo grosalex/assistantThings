@@ -47,16 +47,16 @@ class MainActivity : Activity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = findViewById(R.id.title) as TextView
-        weather = findViewById(R.id.weather) as TextView
-        temperature = findViewById(R.id.temperature) as TextView
-        icon = findViewById(R.id.weather_icon) as ImageView
-        hourlyRecycler = findViewById(R.id.hourly_recycler) as RecyclerView
-        ibHome = findViewById(R.id.ib_home) as ImageButton
+        title = findViewById(R.id.title)
+        weather = findViewById(R.id.weather)
+        temperature = findViewById(R.id.temperature)
+        icon = findViewById(R.id.weather_icon)
+        hourlyRecycler = findViewById(R.id.hourly_recycler)
+        ibHome = findViewById(R.id.ib_home)
 
         hourlyRecycler?.setHasFixedSize(true)
 
-        textClock = findViewById(R.id.textClock) as TextClock
+        textClock = findViewById(R.id.textClock)
         textClock?.format24Hour = "E d MMM HH:mm"
         textClock?.format12Hour = null
 
